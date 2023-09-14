@@ -41,7 +41,7 @@ module.exports = {
     hot : true,
     proxy: {
       '/': 'http://localhost:3000',
-      '/home': 'http://localhost:3000',
+      '/shop': 'http://localhost:3000',
       '/create-product': 'http://localhost:3000',
     },
   },

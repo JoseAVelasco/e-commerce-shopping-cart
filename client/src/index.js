@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { createRoot } from 'react-dom/client';
+
 import '../public/styles.css';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -25,14 +26,14 @@ function App() {
     {
       path: "/",
       element: (
-        <div>
-          <h1>Welcome : Buy & Sell </h1>
-          <Link to="/shop">Shop</Link>
+        <div className='homepage'>
+          <h1 className='title'>Welcome : Buy & Sell </h1>
+          <Link className='links' to="/shop">Shop</Link>
           <br></br>
-          <Link to="/create-product">Create-product</Link>
+          <Link className='links' to="/create-product">Create-product</Link>
           <br></br>
-          <Link to="/cart">Cart</Link>
-         
+          <Link className='links' to="/cart">Cart</Link>
+          
         </div>
       ),
     },

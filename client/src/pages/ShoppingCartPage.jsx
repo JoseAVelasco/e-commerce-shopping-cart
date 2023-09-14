@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useContext } from 'react';
 import { Button, Card, Col, Row, Container } from 'react-bootstrap';
 import { ShoppingCartContext } from '../index.js';
@@ -13,7 +13,7 @@ const ShoppingCartItem = ({ product, removeProduct }) => {
         </Col>
         <Col>
           <Card.Title>{product.name}</Card.Title>
-          <Card.Title>{product.cost}</Card.Title>
+          <Card.Title>${product.cost}</Card.Title>
           <Card.Text>{product.description}</Card.Text>
         </Col>
         <Col>
@@ -33,17 +33,31 @@ export const ShoppingCartPage = () => {
     setCart(cart.filter(productInCart => productInCart !== product))
   }
 
+  const [sum, setSum] = useState(0);
+
+  useEffect(()=>{
+    const totalCost = cart.reduce((acc, product) => acc + product.cost, 0);
+    setSum(totalCost)
+  },[cart])
+
+
+
   return (
     <Container>
       <CustomNavbar />
       <Row className='mb-4'>
         <Col>
-          <h1>Shopping Cart : {cart.length} itmes in cart</h1>
+          <h1>Shopping Cart : {cart.length} items</h1>
         </Col>
       </Row>
       {cart.map((product) => (
         <ShoppingCartItem key={product._id} product={product} removeProduct={removeProduct} />
       ))}
+      <Row>
+      <Col>
+      <h1>Total Cost : ${sum}</h1>
+      </Col>
+    </Row>
     </Container>
   );
 };
