@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { createRoot } from 'react-dom/client';
+import '../public/styles.css';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-
 
 import {
   createBrowserRouter,
@@ -13,6 +13,11 @@ import {
 
 
 import CreateProduct from './pages/CreateProduct.jsx';
+import Products from './pages/Products.jsx';
+import { ShoppingCartPage } from './pages/ShoppingCartPage.jsx';
+
+
+export const ShoppingCartContext = React.createContext();
 
 
 function App() {
@@ -21,14 +26,13 @@ function App() {
       path: "/",
       element: (
         <div>
-          <h1>Hello World</h1>
-          <Link to="/home">Home</Link>
+          <h1>Welcome : Buy & Sell </h1>
+          <Link to="/shop">Shop</Link>
           <br></br>
           <Link to="/create-product">Create-product</Link>
           <br></br>
-          <Link to="/shop">Shop</Link>
-          <br></br>
           <Link to="/cart">Cart</Link>
+         
         </div>
       ),
     },
@@ -37,22 +41,22 @@ function App() {
       element: <CreateProduct/>,
     },
     {
-      path: "home",
-      element: <div>Home</div>,
-    },
-    {
       path: "shop",
-      element: <div>Shop</div>,
+      element: <Products/>,
     },
     {
       path: "cart",
-      element: <div>Cart</div>,
+      element: <ShoppingCartPage/>,
     },
   ]);
+
+  const cartState = useState([]);
   
   return (
     <div className='App'>
+      <ShoppingCartContext.Provider value= {cartState}>
       <RouterProvider router = {router}/>
+      </ShoppingCartContext.Provider>
     </div>
   );
 }

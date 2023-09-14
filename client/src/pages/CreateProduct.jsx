@@ -7,6 +7,7 @@ import Form from 'react-bootstrap/Form';
 import { useState } from 'react';
 
 import axios from "axios";
+import CustomNavbar from '../components/Nav.jsx';
 
 const DEFAULT_FORM_OBJECT = {
   name: '', cost: '', description: ''
@@ -15,18 +16,19 @@ const DEFAULT_FORM_OBJECT = {
 function CreateProduct(){
   const [form, setForm] = useState(DEFAULT_FORM_OBJECT)
 
-  const createProduct = async () =>{
-    e.preventDault();
+  const createProduct = async (e) =>{
+    e.preventDefault();
     await axios.post('http://localhost:8080/products',form)
     setForm({...DEFAULT_FORM_OBJECT})
   }
 
   return(
     <Container>
+      <CustomNavbar />
       <Row>
         <Col>
         <Col xs={6}>
-        <Form onSubmit={createProduct}>
+        <Form onSubmit={createProduct} >
       <Form.Group className="mb-3" controlId="formName">
         <Form.Label>Name</Form.Label>
         <Form.Control onChange={(e) =>{

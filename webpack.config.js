@@ -40,10 +40,9 @@ module.exports = {
     },
     hot : true,
     proxy: {
-      '/': {
-        target: 'http://localhost:3000',
-        changeOrigin : true,
-      },
+      '/': 'http://localhost:3000',
+      '/home': 'http://localhost:3000',
+      '/create-product': 'http://localhost:3000',
     },
-  }
+  },
 };
