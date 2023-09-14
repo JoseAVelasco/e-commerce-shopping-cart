@@ -16,6 +16,7 @@ import {
 import CreateProduct from './pages/CreateProduct.jsx';
 import Products from './pages/Products.jsx';
 import { ShoppingCartPage } from './pages/ShoppingCartPage.jsx';
+import CheckOut from './pages/CheckoutPage.jsx';
 
 
 export const ShoppingCartContext = React.createContext();
@@ -34,6 +35,8 @@ function App() {
           <br></br>
           <Link className='links' to="/cart">Cart</Link>
           
+          <Link className='links' to="/checkout"></Link>
+
         </div>
       ),
     },
@@ -48,6 +51,10 @@ function App() {
     {
       path: "cart",
       element: <ShoppingCartPage/>,
+    },
+    {
+      path: "checkout",
+      element: <CheckOut/>,
     },
   ]);
 

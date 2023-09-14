@@ -47,6 +47,10 @@ app.get('/cart', (req,res) =>{
 });
 
 
+// BUG
+app.get('/checkout', (req,res) =>{
+  return res.status(200).sendFile(path.join(__dirname, '../../client/src/index.html'));
+});
 
 
 

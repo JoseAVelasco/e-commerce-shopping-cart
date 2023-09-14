@@ -4,6 +4,8 @@ import { Button, Card, Col, Row, Container } from 'react-bootstrap';
 import { ShoppingCartContext } from '../index.js';
 import CustomNavbar from '../components/Nav.jsx';
 
+import { useNavigate } from 'react-router-dom';
+
 const ShoppingCartItem = ({ product, removeProduct }) => {
   return (
     <div key={product._id}>
@@ -27,6 +29,8 @@ const ShoppingCartItem = ({ product, removeProduct }) => {
 };
 
 export const ShoppingCartPage = () => {
+  const navigate = useNavigate();
+
   const [cart, setCart] = useContext(ShoppingCartContext);
 
   const removeProduct = (product) => {
@@ -56,6 +60,7 @@ export const ShoppingCartPage = () => {
       <Row>
       <Col>
       <h1>Total Cost : ${sum}</h1>
+      <Button variant="secondary" onClick={() => navigate('/checkout')}>Checkout</Button>
       </Col>
     </Row>
     </Container>
