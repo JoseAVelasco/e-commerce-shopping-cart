@@ -8,6 +8,8 @@ const cors = require('cors');
 const { createProductController } = require('../controllers/createProductController');
 const { getProductsController } = require('../controllers/getProductsController');
 
+const {createUserController} = require('../controllers/createUserController');
+
 app.use(express.json());
 app.use(cors());
 
@@ -46,6 +48,9 @@ app.get('/cart', (req,res) =>{
   return res.status(200).sendFile(path.join(__dirname, '../../client/public/index.html'));
 });
 
+// register
+
+app.post('/register', createUserController)
 
 // BUG
 app.get('/checkout', (req,res) =>{
