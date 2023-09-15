@@ -4,13 +4,10 @@ import { Form, Col, Container, Row, Button, Card } from 'react-bootstrap';
 
 import { ShoppingCartContext } from '../index.js';
 import CustomNavbar from '../components/Nav.jsx';
-// import { Form } from 'react-router-dom';
 
 const ProductCard = ({ product, addProductToCart }) => {
   return (
-    
     <div key= {product._id} className='mb-4'>
-      
        <Card>
       <Card.Img variant="top" />
       <Card.Body>
@@ -21,7 +18,6 @@ const ProductCard = ({ product, addProductToCart }) => {
       </Card.Body>
     </Card>
     </div>
-
   );
 }
 

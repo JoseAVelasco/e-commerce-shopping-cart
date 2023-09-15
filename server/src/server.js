@@ -49,13 +49,17 @@ app.get('/cart', (req,res) =>{
 });
 
 // register
-
 app.post('/register', createUserController)
+
 
 // BUG
 app.get('/checkout', (req,res) =>{
   return res.status(200).sendFile(path.join(__dirname, '../../client/src/index.html'));
 });
+
+// unknown route error handler
+
+// global error handler 
 
 
 
